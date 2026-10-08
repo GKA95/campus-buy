@@ -59,9 +59,17 @@ export const StudentDashboardPage: React.FC<StudentDashboardPageProps> = ({
       {/* Header Profile Banner */}
       <div className="bg-white dark:bg-zinc-900 rounded-3xl border border-zinc-200 dark:border-zinc-800 p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-xs transition-colors">
         <div className="flex items-center gap-4">
-          <div className="w-16 h-16 rounded-2xl bg-orange-600 text-white font-brand font-bold text-2xl flex items-center justify-center shadow-md">
-            {user?.avatarInitial || 'S'}
-          </div>
+          {user?.avatarUrl ? (
+            <img
+              src={user.avatarUrl}
+              alt={user.name}
+              className="w-16 h-16 rounded-2xl object-cover ring-2 ring-orange-500 shadow-md"
+            />
+          ) : (
+            <div className="w-16 h-16 rounded-2xl bg-orange-600 text-white font-brand font-bold text-2xl flex items-center justify-center shadow-md">
+              {user?.avatarInitial || 'S'}
+            </div>
+          )}
           <div>
             <div className="flex items-center gap-2">
               <h1 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-white font-brand">
@@ -70,6 +78,11 @@ export const StudentDashboardPage: React.FC<StudentDashboardPageProps> = ({
               <span className="text-[11px] font-bold text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-950/40 border border-orange-200 dark:border-orange-800/60 px-2.5 py-0.5 rounded-full uppercase">
                 Student
               </span>
+              {user?.authProvider === 'google' && (
+                <span className="text-[10px] font-semibold text-zinc-600 dark:text-zinc-300 bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 px-2 py-0.5 rounded-md flex items-center gap-1">
+                  Google
+                </span>
+              )}
             </div>
             <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">{user?.email}</p>
             <div className="flex items-center gap-2 text-xs text-zinc-600 dark:text-zinc-400 mt-2">
@@ -77,7 +90,7 @@ export const StudentDashboardPage: React.FC<StudentDashboardPageProps> = ({
               <span>·</span>
               <span className="flex items-center gap-1">
                 <MapPin className="w-3 h-3 text-zinc-400" />
-                <span>{user?.hallOrHostel} ({user?.roomNumber})</span>
+                <span>{user?.hallOrHostel} {user?.roomNumber ? `(${user?.roomNumber})` : ''}</span>
               </span>
             </div>
           </div>

@@ -186,9 +186,17 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenS
                 onClick={() => handleNavClick(user.role === 'vendor' ? 'vendor-dashboard' : 'student-dashboard')}
                 className="hidden sm:flex items-center gap-2 px-3 py-1.5 text-xs font-semibold text-zinc-900 dark:text-white bg-zinc-100 dark:bg-zinc-900 hover:bg-zinc-200 dark:hover:bg-zinc-800 border border-zinc-200 dark:border-zinc-800 rounded-lg transition-colors whitespace-nowrap"
               >
-                <span className="w-5 h-5 rounded-full bg-orange-600 text-white text-[10px] flex items-center justify-center font-bold">
-                  {user.avatarInitial}
-                </span>
+                {user.avatarUrl ? (
+                  <img
+                    src={user.avatarUrl}
+                    alt={user.name}
+                    className="w-5 h-5 rounded-full object-cover ring-1 ring-orange-500/50"
+                  />
+                ) : (
+                  <span className="w-5 h-5 rounded-full bg-orange-600 text-white text-[10px] flex items-center justify-center font-bold">
+                    {user.avatarInitial}
+                  </span>
+                )}
                 <span className="max-w-[90px] truncate">{user.name.split(' ')[0]}</span>
                 <span className="text-[10px] text-orange-600 dark:text-orange-400 uppercase font-bold tracking-wider">
                   ({user.role})

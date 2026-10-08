@@ -132,4 +132,6 @@ export interface UserProfile {
   savedVendors: string[];
   wishlistProductIds: string[];
   avatarInitial: string;
+  avatarUrl?: string;
+  authProvider?: 'google' | 'password' | 'demo';
 }

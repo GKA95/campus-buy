@@ -303,6 +303,24 @@ export const CartPage: React.FC<CartPageProps> = ({
         maxWidth="lg"
       >
         <form onSubmit={handlePlaceOrder} className="space-y-4 text-xs sm:text-sm">
+          {!user && (
+            <div className="p-3 bg-orange-50/70 dark:bg-orange-950/30 rounded-xl border border-orange-200 dark:border-orange-800/60 flex items-center justify-between gap-3">
+              <div className="text-xs text-orange-950 dark:text-orange-200">
+                <span className="font-semibold block">Campus scholar or vendor?</span>
+                <span className="text-[11px] text-zinc-600 dark:text-zinc-400">Sign in with Google to pre-fill hostel details</span>
+              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  setIsCheckoutModalOpen(false);
+                  onNavigate('auth');
+                }}
+                className="px-3 py-1.5 rounded-lg bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-xs font-semibold text-zinc-900 dark:text-white hover:bg-zinc-50 shadow-xs whitespace-nowrap"
+              >
+                Sign In
+              </button>
+            </div>
+          )}
           
           <div className="p-3 bg-zinc-50 dark:bg-zinc-800/60 rounded-xl border border-zinc-200 dark:border-zinc-700 text-xs">
             <span className="text-zinc-500 dark:text-zinc-400 block text-[11px]">Payable on Delivery:</span>
