@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CampusBuy - University Marketplace</title>
+    <meta name="description" content="Your Campus. Your Marketplace. Discover verified products, trusted student vendors, and campus services across Ghanaian universities." />
+    <meta property="og:title" content="CampusBuy - University Marketplace" />
+    <meta property="og:description" content="Your Campus. Your Marketplace. Discover verified products, trusted student vendors, and campus services across Ghanaian universities." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      // Suppress internal browser extension timeouts and foreign chrome-extension errors from leaking as app crashes
+      window.addEventListener('error', function(e) {
+        if (
+          (e.filename && e.filename.indexOf('chrome-extension://') !== -1) ||
+          (e.message && (e.message.indexOf('chrome: call method') !== -1 || e.message.indexOf('timed out') !== -1))
+        ) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          return true;
+        }
+      }, true);
+
+      window.addEventListener('unhandledrejection', function(e) {
+        var reason = e.reason;
+        var msg = (reason && (reason.message || reason.stack || String(reason))) || '';
+        if (msg.indexOf('chrome: call method') !== -1 || msg.indexOf('chrome-extension://') !== -1) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+        }
+      }, true);
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-zinc-50 dark:bg-black text-zinc-950 dark:text-zinc-100 antialiased font-sans transition-colors">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

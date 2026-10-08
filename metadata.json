@@ -1,0 +1,6 @@
+{
+  "name": "CampusBuy - University Marketplace",
+  "description": "Your Campus. Your Marketplace. Discover verified products, trusted student vendors, and campus services across Ghanaian universities.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
